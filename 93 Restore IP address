@@ -1,0 +1,21 @@
+what is the definition of valid IP
+1）The length of the ip without '.' should be equal to the length of s
+2）The digit order of ip should be same as the digit order of s;
+3）Each part separated by the '.' should not start with '0' except only '0'
+4）Each part separared by the '.' should not larger than 255
+
+前两条不太懂
+把数字分成任意四部分，每一部分s均须满足：
+  1）0<s.lenth<=3
+  2)s.val<=255
+  3)if s.lenth>1 则s[0]！=0
+
+失败+1 搞不懂有效地址是什么
+question:
+Given a string containing only digits, restore it by returning all possible valid IP address combinations.
+Example:
+Input: "25525511135"
+Output: ["255.255.11.135", "255.255.111.35"]
+
+my answer:
+
