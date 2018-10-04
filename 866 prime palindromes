@@ -1,0 +1,50 @@
+Find the smallest prime palindrome greater than or equal to N.
+Recall that a number is prime if it's only divisors are 1 and itself, and it is greater than 1. 
+For example, 2,3,5,7,11 and 13 are primes.
+Recall that a number is a palindrome if it reads the same from left to right as it does from right to left. 
+For example, 12321 is a palindrome.
+Example 1:
+Input: 6
+Output: 7
+
+Example 2:
+Input: 8
+Output: 11
+
+Example 3:
+Input: 13
+Output: 101
+ 
+Note:
+1 <= N <= 10^8
+The answer is guaranteed to exist and be less than 2 * 10^8.
+
+首先判断数n是否为素数，只需要判断0~根号n即可，具体原因参照百度，因而判断一个数是否为素数的时间复杂度为根号n ?
+其次判断一个数是否为回文，无需遍历所有的数，自己去构造回文，并判断是否大于n是否为素数（十分之巧妙，膜拜233）
+
+my answer:
+ class Solution:
+
+    def primePalindrome(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        def if_prime(n):
+            return n>1 and all(n%d for d in range(2,int(n**.5+1)))
+                                
+        for length in range(5):
+            for i in range(10**length,10**(length+1)):
+                x=str(i)
+                x=x+x[-2::-1]
+                x=int(x)
+                if x>=N and if_prime(x):
+                    return x
+                
+            for i in range(10**length,10**(length+1)):
+                x=str(i)
+                x=x+x[-1::-1]
+                x=int(x)
+                if x>=N and if_prime(x):
+                    return x
+            
