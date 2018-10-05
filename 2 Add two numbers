@@ -42,5 +42,3 @@ class Solution:
             temp=nextt
             
         return result
-		
-gaibian
